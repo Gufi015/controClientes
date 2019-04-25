@@ -1,19 +1,52 @@
-<div class="jumbotron" style="background-color: blueviolet;">
-  <div class="container" style="align-content: center">
-    <div class="form-group">
-      <input type="email" placeholder="email" name="email" size="25">
+<header class="py-2 bg-info text-white" id="main-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>
+          <i class="fas fa-user"></i> Login Cliente
+        </h1>
+      </div>
     </div>
-    <div class="form-group">
-      <input type="password" placeholder="password" name="password" size="25">
+  </div>
+</header>
+
+
+<section id="actions" class="py-4 mb-4 bg-light">
+  <div class="container">
+    <div class="row">
+
     </div>
+  </div>
+</section>
 
-    <button type="submit" class="btn btn-primary">Ingresar</button>
+<flash-messages></flash-messages>
 
+<section id="login">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div class="card-header">
+            <h4>Login</h4>
+          </div>
+          <div class="card-body">
+            <form (submit)="login()">
+              <div class="form-group">
+                <label for="email"> Email</label>
+                <input type="email" name="email" id="email" class="form-control" [(ngModel)]="email" required>
+              </div>
+              <div class="form-group">
+                <label for="password"> Password</label>
+                <input type="password" name="password" id="password" class="form-control" [(ngModel)]="password" required>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 
-</div>
+</section>
 
-
-<form action="">
-
-</form>
