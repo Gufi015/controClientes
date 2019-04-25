@@ -22,6 +22,8 @@ import { FooterComponent } from './componentes/footer/footer.component';
 import { environment } from '../environments/environment';
 import { from } from 'rxjs';
 import { ClienteServicio } from './servicios/cliente.service';
+import { LoginService } from './servicios/login.service';
+import { AuthGuard } from './guardianes/auth.guard';
 
 @NgModule({
   declarations: [
@@ -39,15 +41,13 @@ import { ClienteServicio } from './servicios/cliente.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firestore, 'control-clientes'),
+    AngularFireModule.initializeApp(environment.firestore, "control-clientes"),
     AngularFirestoreModule,
     AngularFireAuthModule,
     FormsModule,
     FlashMessagesModule.forRoot()
   ],
-  providers: [
-    ClienteServicio
-  ],
+  providers: [ClienteServicio, LoginService, AuthGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

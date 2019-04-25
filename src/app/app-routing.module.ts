@@ -7,15 +7,24 @@ import { ConfiguracionComponent } from './componentes/configuracion/configuracio
 import { ClientesComponent } from './componentes/clientes/clientes.component';
 import { EditarClienteComponent } from './componentes/editar-cliente/editar-cliente.component';
 import { NoEncontradoComponent } from './componentes/no-encontrado/no-encontrado.component';
+import { AuthGuard } from './guardianes/auth.guard';
+
 
 const routes: Routes = [
-  {path: '', component: TableroComponent},
-  {path: 'login', component:LoginComponent},
-  {path: 'registrarse', component: RegistroComponent},
-  {path: 'configuracion', component: ConfiguracionComponent},
-  {path: 'cliente/editar/:id', component: EditarClienteComponent},
-  {path: '**', component:NoEncontradoComponent},
-
+  { path: "", component: TableroComponent, canActivate: [AuthGuard] },
+  { path: "login", component: LoginComponent },
+  { path: "registrarse", component: RegistroComponent },
+  {
+    path: "configuracion",
+    component: ConfiguracionComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "cliente/editar/:id",
+    component: EditarClienteComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: "**", component: NoEncontradoComponent }
 ];
 
 @NgModule({

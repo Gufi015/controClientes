@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { LoginService } from '../../servicios/login.service';
+import { auth } from 'firebase';
 
 @Component({
   selector: 'app-login',
@@ -13,13 +15,28 @@ export class LoginComponent implements OnInit {
   password: string;
 
   constructor(private router:Router,
-    private flashMessages: FlashMessagesService,) { }
+    private flashMessages: FlashMessagesService,
+    private loginService: LoginService) { }
 
   ngOnInit() {
+
+    this.loginService.getAut().subscribe(auth => {
+      if(auth){
+        this.router.navigate(['/']);
+      }
+    })
   }
 
   login(){
-
+    this.loginService.login(this.email, this.password)
+    .then( res => {
+      console.log('respuesta del login' + JSON.stringify(res));
+      this.router.navigate(['/']);
+    }).catch( error => {
+      this.flashMessages.show(error.message, {
+        cssClass: 'alert-danger', timeout:4000
+      });
+    });
   }
 
 }
