@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: '', component: TableroComponent},
   {path: 'login', component:LoginComponent},
   {path: 'registrarse', component: RegistroComponent},
-  {path: 'configuracin', component: ConfiguracionComponent},
+  {path: 'configuracion', component: ConfiguracionComponent},
   {path: 'cliente/editar/:id', component: EditarClienteComponent},
   {path: '**', component:NoEncontradoComponent},
 
