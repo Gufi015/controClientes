@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/servicios/login.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-registro',
@@ -7,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor() { }
+  email: string;
+  password: string;
+
+  constructor(private router: Router,
+    private loginService: LoginService,
+    private flassMessages: FlashMessagesService) { }
 
   ngOnInit() {
+    this.loginService.getAut().subscribe(auth => {
+      if (auth) {
+        this.router.navigate(['/']);
+      }
+    });
+  }
+
+
+  registro() {
+    this.loginService.registrarse(this.email, this.password).then(
+      res => {
+        this.router.navigate(['/']);
+      }).catch(error => {
+        this.flassMessages.show(error.messages, {
+          cssClass: 'alert-danger', timeout: 400
+        });
+
+      });
+
   }
 
 }

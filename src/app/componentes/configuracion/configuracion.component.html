@@ -1,3 +1,78 @@
-<p>
-  configuracion works!
-</p>
+<header class="py-2 bg-info text-white" id="main-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>
+          <i class="fas fa-user"></i> Configuraciones
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="actions" class="py-4 mb-4 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <a routerLink="/" class="btn btn-light btn-block">
+          <i class="fas fa-arrow-left"></i> Regresar al Inicio
+        </a>
+      </div>
+      <div class="col-md-3">
+        <button type="submit" (click)="guardarConfiguracion()" class="btn btn-success btn-block">
+            <i class="fas fa-checked"></i> Guardar Cambios
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="configuracion">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            <h4>Editar Configuración</h4>
+          </div>
+          <div class="card-body">
+            <fieldset class="form-group">
+              <legend>Permitir registro de usuarios</legend>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-label" type="checkbox" name="permitirRegitro"
+                  [(ngModel)]="permitirRegistro"
+                  (checked)="permitirRegistro"
+                  >{{permitirRegistro?'SI':'NO'}}
+                </label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!--
+
+<div class="card-header">
+    <h4>Editar Configuración</h4>
+  </div>
+  <div class="card-body">
+    <fieldset class="form-group">
+      <legend>Permitir Registro de Usuarios</legend>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" name="permitirRegistro"
+          class="form-check-input"
+          [(ngModel)]="permitirRegistro"
+          (checked)="permitirRegistro">{{permitirRegistro?"SI","NO"}}
+        </label>
+      </div>
+    </fieldset>
+  </div>
+
+-->
